@@ -4,40 +4,48 @@
 
 ### B.Tech Information Technology Student • Aspiring Software Engineer
 
-A modern personal portfolio showcasing my technical skills, projects, learning journey, and contact information.
+A personal portfolio website showcasing my background, skills, projects, learning journey, and ways to connect with me.
 
 <br>
 
-[![Portfolio](https://img.shields.io/badge/🌐%20Live%20Portfolio-Visit%20Website-0f172a?style=for-the-badge)](https://portfolio-eosin-one-dc2zewz88e.vercel.app/)
-[![GitHub](https://img.shields.io/badge/GitHub-kesavakumar6-181717?style=for-the-badge&logo=github)](https://github.com/kesavakumar6)
-[![LinkedIn](https://img.shields.io/badge/LinkedIn-Kesava%20Kumar-0A66C2?style=for-the-badge&logo=linkedin)](https://www.linkedin.com/in/kesavakumarg/)
+<a href="https://kesavakumar6.github.io/Portfolio/">
+  <img src="https://img.shields.io/badge/🌐%20Live%20Portfolio-Visit%20Website-0f172a?style=for-the-badge" alt="Live Portfolio">
+</a>
+
+<a href="https://github.com/kesavakumar6">
+  <img src="https://img.shields.io/badge/GitHub-kesavakumar6-181717?style=for-the-badge&logo=github" alt="GitHub">
+</a>
+
+<a href="https://www.linkedin.com/in/kesavakumarg/">
+  <img src="https://img.shields.io/badge/LinkedIn-Kesava%20Kumar-0A66C2?style=for-the-badge&logo=linkedin" alt="LinkedIn">
+</a>
 
 </div>
 
 ---
 
-## 👋 About
+## 👋 About the Portfolio
 
 This repository contains my personal portfolio website.
 
-The portfolio is designed to present who I am, what I am learning, the technologies I work with, and the projects I build as I progress through my journey in Information Technology and software development.
+The website is designed to give a simple overview of who I am as an Information Technology student, the technologies I am learning, the projects I work on, and my journey toward becoming a software engineer.
 
-I focus on learning through **building, debugging, experimenting, and continuously improving**.
+The portfolio will continue to evolve as I build more projects, learn new technologies, and gain more experience.
 
 ---
 
-## 🚀 Features
+## ✨ Features
 
-- 🎨 Modern and clean portfolio interface
-- 📱 Responsive design for different screen sizes
-- ✨ Animated and interactive UI elements
-- 👨‍💻 About Me section
-- 🛠️ Technical skills section
+- 🎨 Modern and responsive design
+- 📱 Mobile-friendly layout
+- ✨ Interactive visual elements and animations
+- 👨‍💻 Personal introduction
+- 🛠️ Skills and technologies section
 - 🚀 Project showcase
 - 📚 Learning and development journey
 - 📬 Contact form
-- 🔗 GitHub and LinkedIn integration
-- ⚡ Lightweight and easy to deploy
+- 🔗 GitHub and LinkedIn links
+- ⚡ Lightweight static website
 
 ---
 
@@ -53,8 +61,8 @@ I focus on learning through **building, debugging, experimenting, and continuous
 
 - Git
 - GitHub
-- Formspree
 - VS Code
+- Formspree
 
 ---
 
@@ -64,5 +72,4 @@ I focus on learning through **building, debugging, experimenting, and continuous
 Portfolio/
 │
 ├── index.html
-│
 └── README.md
