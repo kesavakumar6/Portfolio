@@ -3,587 +3,703 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Kesava Kumar — B.Tech IT Student, Aspiring Software Engineer</title>
-<meta name="description" content="Portfolio of Kesava Kumar, a B.Tech Information Technology student building programming and computer science fundamentals.">
+<title>Kesava Kumar G — B.Tech IT Student, Aspiring Software Engineer</title>
+<meta name="description" content="Portfolio of Kesava Kumar G, a B.Tech Information Technology student building programming and computer science fundamentals.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
-  :root{
-    --bg: #f4f3ee;
-    --bg-raised: #eae8e1;
-    --ink: #1d211f;
-    --ink-soft: #565b54;
-    --ink-faint: #8a8f86;
-    --accent: #2f5d4c;
-    --accent-soft: #dde7e0;
-    --line: #d7d4c9;
-    --amber: #a8631a;
-    --amber-soft: #f0e1cd;
-    --radius: 3px;
-    --max: 700px;
-    --sidebar: 232px;
-    font-size: 16px;
+  :root {
+    --bg: #f8f6f0;
+    --card: #ffffff;
+    --ink: #181c1a;
+    --ink-muted: #545c58;
+    --ink-faint: #8a928e;
+    --border: #e4dfd3;
+    --border-hover: #b8b1a2;
+
+    --forest: #1b543e;
+    --forest-bg: #eaf3ed;
+    --terracotta: #b84c24;
+    --terracotta-bg: #faede8;
+    --cobalt: #1e5aa0;
+    --cobalt-bg: #eaf1fa;
+    --honey: #946200;
+    --honey-bg: #fbf3e0;
+    --slate-bg: #f0ede6;
+
+    --radius: 6px;
+    --content-width: 680px;
   }
 
-  *{ box-sizing: border-box; }
-  html{ scroll-behavior: smooth; }
-  @media (prefers-reduced-motion: reduce){
-    html{ scroll-behavior: auto; }
-    *{ animation-duration: 0.001ms !important; transition-duration: 0.001ms !important; }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #121614;
+      --card: #181d1a;
+      --ink: #eceee9;
+      --ink-muted: #9ba39e;
+      --ink-faint: #636b66;
+      --border: #262e29;
+      --border-hover: #3d4a42;
+
+      --forest: #42b883;
+      --forest-bg: #142e22;
+      --terracotta: #e07048;
+      --terracotta-bg: #2e1c15;
+      --cobalt: #5c9ce6;
+      --cobalt-bg: #142336;
+      --honey: #e5a429;
+      --honey-bg: #2e2310;
+      --slate-bg: #1f2622;
+    }
   }
 
-  body{
-    margin:0;
-    background: var(--bg);
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { 
+    scroll-behavior: smooth;
+    scroll-padding-top: 72px;
+  }
+
+  body {
+    background-color: var(--bg);
     color: var(--ink);
-    font-family: 'IBM Plex Sans', -apple-system, BlinkMacSystemFont, sans-serif;
-    line-height: 1.6;
+    font-family: 'Plus Jakarta Sans', -apple-system, sans-serif;
+    line-height: 1.68;
+    font-size: 16px;
     -webkit-font-smoothing: antialiased;
   }
 
-  a{ color: var(--accent); text-decoration-thickness: 1px; text-underline-offset: 2px; }
-  a:hover{ color: var(--ink); }
-  a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visible{
-    outline: 2px solid var(--accent);
-    outline-offset: 3px;
-  }
+  .mono { font-family: 'JetBrains Mono', monospace; }
 
-  .skip-link{
-    position: absolute; left: -999px; top: 0;
+  .sr-only {
+    position: absolute;
+    width: 1px; height: 1px;
+    padding: 0; margin: -1px;
+    overflow: hidden; clip: rect(0, 0, 0, 0); border: 0;
+  }
+  .sr-only:focus {
+    position: fixed; top: 14px; left: 14px;
+    width: auto; height: auto;
+    padding: 8px 14px;
     background: var(--ink); color: var(--bg);
-    padding: 10px 16px; z-index: 100;
-  }
-  .skip-link:focus{ left: 12px; top: 12px; }
-
-  code, .mono{
-    font-family: 'IBM Plex Mono', ui-monospace, Menlo, monospace;
+    z-index: 1000; clip: auto; border-radius: 4px;
   }
 
-  /* ---------- Layout shell ---------- */
-  .shell{
-    display: grid;
-    grid-template-columns: var(--sidebar) 1fr;
-    min-height: 100vh;
-  }
-
-  .sidebar{
+  .navbar {
     position: sticky;
     top: 0;
-    height: 100vh;
-    border-right: 1px solid var(--line);
-    padding: 40px 28px;
+    background: var(--bg);
+    border-bottom: 1px solid var(--border);
+    z-index: 50;
+    backdrop-filter: blur(8px);
+  }
+
+  .nav-inner {
+    max-width: var(--content-width);
+    margin: 0 auto;
+    padding: 12px 20px;
     display: flex;
-    flex-direction: column;
     justify-content: space-between;
+    align-items: center;
+    gap: 16px;
   }
 
-  .brand{
-    display: block;
-    font-family: 'IBM Plex Mono', monospace;
-    font-weight: 500;
-    font-size: 0.95rem;
+  .nav-brand {
+    font-size: 0.88rem;
+    font-weight: 600;
     color: var(--ink);
     text-decoration: none;
-    border: 1px solid var(--line);
-    background: var(--bg-raised);
-    padding: 6px 10px;
-    border-radius: var(--radius);
-    width: fit-content;
-  }
-  .brand:hover{ color: var(--ink); border-color: var(--accent); }
-
-  .side-nav{ margin-top: 36px; }
-  .side-nav ul{ list-style: none; margin:0; padding:0; display:flex; flex-direction:column; gap: 2px;}
-  .side-nav a{
-    display:block;
-    color: var(--ink-soft);
-    text-decoration: none;
-    font-size: 0.92rem;
-    padding: 7px 10px;
-    border-radius: var(--radius);
-    border-left: 2px solid transparent;
-  }
-  .side-nav a:hover{ color: var(--ink); background: var(--bg-raised); }
-  .side-nav a.active{
-    color: var(--accent);
-    border-left: 2px solid var(--accent);
-    font-weight: 500;
-  }
-
-  .sidebar-foot{
-    font-size: 0.8rem;
-    color: var(--ink-faint);
-    line-height: 1.5;
-  }
-
-  main{
-    padding: 64px clamp(24px, 6vw, 96px);
-    max-width: 980px;
-  }
-
-  section{
-    max-width: var(--max);
-    padding-bottom: 88px;
-    margin-bottom: 88px;
-    border-bottom: 1px solid var(--line);
-  }
-  section:last-of-type{ border-bottom: none; }
-
-  h1,h2,h3{
-    font-family: 'IBM Plex Sans', sans-serif;
-    font-weight: 600;
-    line-height: 1.25;
     letter-spacing: -0.01em;
-    color: var(--ink);
-    margin: 0;
+    flex-shrink: 0;
   }
-  h2{ font-size: 1.5rem; margin-bottom: 24px; }
-  h3{ font-size: 1.05rem; margin-bottom: 6px; }
-  p{ margin: 0 0 14px; color: var(--ink-soft); max-width: 62ch; }
-  p:last-child{ margin-bottom: 0; }
 
-  .field-label{
-    font-family: 'IBM Plex Mono', monospace;
+  .nav-links {
+    display: flex;
+    gap: 16px;
+    list-style: none;
+    overflow-x: auto;
+    white-space: nowrap;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+  .nav-links::-webkit-scrollbar { display: none; }
+
+  .nav-links a {
+    color: var(--ink-muted);
+    text-decoration: none;
+    font-size: 0.85rem;
+    transition: color 0.15s ease;
+  }
+  .nav-links a:hover { color: var(--forest); }
+
+  main {
+    max-width: var(--content-width);
+    margin: 0 auto;
+    padding: 48px 20px 72px;
+  }
+
+  section { margin-bottom: 56px; }
+
+  h1 {
+    font-size: 2.15rem;
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    line-height: 1.2;
+    color: var(--ink);
+    margin-bottom: 4px;
+  }
+
+  .role-sub {
+    font-size: 1.05rem;
+    color: var(--forest);
+    font-weight: 600;
+    margin-bottom: 18px;
+  }
+
+  h2 {
+    font-size: 1.25rem;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    color: var(--ink);
+    margin-bottom: 16px;
+  }
+
+  p {
+    color: var(--ink-muted);
+    margin-bottom: 14px;
+    font-size: 0.98rem;
+  }
+  p:last-child { margin-bottom: 0; }
+
+  a {
+    color: var(--forest);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    text-decoration-color: var(--border-hover);
+  }
+  a:hover {
+    color: var(--ink);
+    text-decoration-color: var(--ink);
+  }
+
+  .tag-row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px;
+    margin-top: 18px;
+  }
+
+  .tag {
+    display: inline-flex;
+    align-items: center;
     font-size: 0.78rem;
-    color: var(--ink-faint);
-    margin: 0 0 4px;
+    font-weight: 500;
+    padding: 4px 10px;
+    border-radius: 4px;
+    border: 1px solid transparent;
+    line-height: 1.3;
   }
+  .tag-cobalt { background: var(--cobalt-bg); color: var(--cobalt); border-color: rgba(30, 90, 160, 0.2); }
+  .tag-c { background: var(--forest-bg); color: var(--forest); border-color: rgba(27, 84, 62, 0.2); }
+  .tag-amber { background: var(--honey-bg); color: var(--honey); border-color: rgba(148, 98, 0, 0.2); }
+  .tag-terra { background: var(--terracotta-bg); color: var(--terracotta); border-color: rgba(184, 76, 36, 0.2); }
+  .tag-neutral { background: var(--slate-bg); color: var(--ink-muted); border-color: var(--border); }
 
-  /* ---------- Hero ---------- */
-  .hero{ padding-bottom: 56px; margin-bottom: 56px; }
-  .hero .role-line{
-    font-size: 1.7rem;
-    font-weight: 600;
-    color: var(--ink);
-    margin: 4px 0 2px;
-  }
-  .hero .role-sub{
-    font-size: 1.7rem;
-    font-weight: 600;
-    color: var(--accent);
-    margin: 0 0 20px;
-  }
-  .hero .name{
-    font-family: 'IBM Plex Mono', monospace;
-    font-size: 0.95rem;
-    color: var(--ink-faint);
-  }
-  .hero p{ font-size: 1.02rem; max-width: 58ch; }
-
-  .tag-row{
-    display:flex; flex-wrap: wrap; gap: 8px;
-    margin-top: 22px;
-  }
-  .tag{
-    font-family: 'IBM Plex Mono', monospace;
-    font-size: 0.8rem;
-    padding: 5px 10px;
-    border-radius: var(--radius);
-    background: var(--bg-raised);
-    border: 1px solid var(--line);
-    color: var(--ink-soft);
-  }
-  .tag.learning{ background: var(--amber-soft); border-color: #e2c299; color: #6b3f10; }
-  .tag.solid{ background: var(--accent-soft); border-color: #bcd3c6; color: #204536; }
-
-  /* ---------- Skills ---------- */
-  .skill-groups{
+  .skill-columns {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 32px;
+    gap: 16px;
+    margin-top: 16px;
   }
-  @media (max-width: 640px){ .skill-groups{ grid-template-columns: 1fr; } }
-  .skill-group h3{ font-size: 0.85rem; text-transform: none; color: var(--ink-faint); font-weight: 500; margin-bottom: 12px; }
-  .skill-group .tag-row{ margin-top: 0; }
-  .skill-note{ margin-top: 28px; font-size: 0.92rem; }
+  @media (max-width: 580px) {
+    .skill-columns { grid-template-columns: 1fr; }
+  }
 
-  /* ---------- Projects ---------- */
-  .project{
-    border: 1px solid var(--line);
+  .skill-col {
+    background: var(--card);
+    border: 1px solid var(--border);
     border-radius: var(--radius);
-    padding: 26px 28px;
-    margin-bottom: 22px;
-    background: var(--bg-raised);
+    padding: 18px 20px;
   }
-  .project:last-child{ margin-bottom: 0; }
-  .project-head{
-    display:flex; align-items: baseline; justify-content: space-between; gap: 12px; flex-wrap: wrap;
-  }
-  .status{
-    font-family: 'IBM Plex Mono', monospace;
-    font-size: 0.75rem;
+
+  .skill-col h3 {
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
     color: var(--ink-faint);
-    white-space: nowrap;
+    margin-bottom: 12px;
   }
-  .project dl{ margin: 16px 0 0; display: grid; gap: 12px; }
-  .project dt{
-    font-family: 'IBM Plex Mono', monospace;
+
+  .project-box {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-left: 4px solid var(--forest);
+    border-radius: var(--radius);
+    padding: 22px 24px;
+    margin-bottom: 18px;
+  }
+
+  .project-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 10px;
+  }
+
+  .project-head h3 {
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: var(--ink);
+  }
+
+  .project-status {
+    font-size: 0.74rem;
+    font-weight: 500;
+    color: var(--terracotta);
+    background: var(--terracotta-bg);
+    padding: 2px 8px;
+    border-radius: 4px;
+    border: 1px solid rgba(184, 76, 36, 0.2);
+  }
+
+  .project-fields {
+    margin-top: 16px;
+    display: grid;
+    gap: 14px;
+  }
+
+  .field-title {
     font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
     color: var(--ink-faint);
     margin-bottom: 3px;
   }
-  .project dd{ margin: 0; color: var(--ink-soft); }
 
-  .placeholder-card{
-    border: 1px dashed var(--line);
-    border-radius: var(--radius);
-    padding: 22px 24px;
-    color: var(--ink-faint);
-    font-size: 0.92rem;
+  .field-body {
+    font-size: 0.93rem;
+    color: var(--ink-muted);
   }
 
-  /* ---------- Learning / debugging philosophy ---------- */
-  .method-list{
+  .placeholder-card {
+    border: 1px dashed var(--border);
+    border-radius: var(--radius);
+    padding: 18px 20px;
+    font-size: 0.9rem;
+    color: var(--ink-faint);
+  }
+
+  .method-list {
     list-style: none;
-    margin: 18px 0 0;
+    margin: 16px 0 0;
     padding: 0;
     counter-reset: step;
+    border-top: 1px solid var(--border);
   }
-  .method-list li{
+
+  .method-list li {
     counter-increment: step;
     display: grid;
-    grid-template-columns: 28px 1fr;
-    gap: 14px;
-    padding: 10px 0;
-    border-top: 1px solid var(--line);
-    color: var(--ink-soft);
-  }
-  .method-list li:first-child{ border-top: none; }
-  .method-list li::before{
-    content: counter(step);
-    font-family: 'IBM Plex Mono', monospace;
-    font-size: 0.8rem;
-    color: var(--accent);
+    grid-template-columns: 24px 1fr;
+    align-items: baseline;
+    gap: 12px;
+    padding: 11px 0;
+    border-bottom: 1px solid var(--border);
+    font-size: 0.94rem;
+    color: var(--ink-muted);
   }
 
-  /* ---------- GitHub ---------- */
-  .github-box{
-    display:flex; align-items:center; justify-content: space-between; flex-wrap: wrap; gap: 18px;
-    border: 1px solid var(--line);
-    background: var(--bg-raised);
-    border-radius: var(--radius);
-    padding: 22px 26px;
+  .method-list li::before {
+    content: counter(step);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: var(--forest);
   }
-  .btn{
-    display:inline-block;
-    font-family: 'IBM Plex Mono', monospace;
-    font-size: 0.85rem;
-    padding: 10px 16px;
+
+  .edu-box {
+    background: var(--card);
+    border: 1px solid var(--border);
     border-radius: var(--radius);
+    padding: 20px 22px;
+  }
+
+  .edu-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 4px;
+  }
+
+  .edu-head h3 {
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: var(--ink);
+  }
+
+  .edu-dates {
+    font-size: 0.82rem;
+    color: var(--forest);
+    font-weight: 500;
+  }
+
+  .contact-list {
+    list-style: none;
+    margin-top: 14px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+  @media (max-width: 580px) {
+    .contact-list { grid-template-columns: 1fr; }
+  }
+
+  .contact-list li {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 14px 18px;
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+  }
+
+  .contact-label {
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--ink-faint);
+  }
+
+  .contact-list a {
+    font-size: 0.9rem;
+    color: var(--ink);
+    text-decoration: none;
+    word-break: break-all;
+  }
+  .contact-list a:hover {
+    color: var(--forest);
+  }
+
+  /* Contact Form */
+  .contact-form {
+    margin-top: 24px;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 22px 24px;
+    display: grid;
+    gap: 16px;
+  }
+
+  .form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .form-label {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    color: var(--ink-faint);
+    font-weight: 600;
+  }
+
+  .form-input,
+  .form-textarea {
+    width: 100%;
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 10px 12px;
+    font-family: inherit;
+    font-size: 0.92rem;
+    color: var(--ink);
+    transition: border-color 0.15s ease, outline 0.15s ease;
+  }
+
+  .form-input:focus,
+  .form-textarea:focus {
+    outline: none;
+    border-color: var(--forest);
+  }
+
+  .form-textarea {
+    min-height: 110px;
+    resize: vertical;
+    line-height: 1.5;
+  }
+
+  .btn-submit {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    align-self: flex-start;
     background: var(--ink);
     color: var(--bg);
-    text-decoration: none;
-  }
-  .btn:hover{ background: var(--accent); color: var(--bg); }
-
-  /* ---------- Education ---------- */
-  .edu-row{ display:flex; gap: 16px; align-items: baseline; flex-wrap: wrap; }
-  .edu-row + p{ margin-top: 10px; }
-
-  /* ---------- Contact ---------- */
-  .contact-list{ list-style:none; margin: 18px 0 0; padding:0; display:grid; gap: 10px; }
-  .contact-list li{
-    display:flex; gap: 10px; align-items:center;
-    font-family: 'IBM Plex Mono', monospace;
-    font-size: 0.9rem;
-    color: var(--ink-soft);
-  }
-  .contact-list li span.k{ color: var(--ink-faint); min-width: 78px; }
-
-  footer{
-    padding: 32px clamp(24px, 6vw, 96px) 56px;
-    color: var(--ink-faint);
+    font-family: 'JetBrains Mono', monospace;
     font-size: 0.82rem;
-    max-width: 980px;
+    font-weight: 600;
+    padding: 9px 18px;
+    border-radius: 4px;
+    border: none;
+    cursor: pointer;
+    transition: opacity 0.15s;
   }
 
-  /* ---------- Mobile ---------- */
-  .mobile-topbar{ display:none; }
-  @media (max-width: 880px){
-    .shell{ grid-template-columns: 1fr; }
-    .sidebar{ display:none; }
-    .mobile-topbar{
-      display:flex; align-items:center; justify-content: space-between;
-      position: sticky; top:0; z-index: 50;
-      background: var(--bg);
-      border-bottom: 1px solid var(--line);
-      padding: 14px 20px;
-    }
-    .mobile-topbar button{
-      font-family: 'IBM Plex Mono', monospace;
-      background: var(--bg-raised);
-      border: 1px solid var(--line);
-      border-radius: var(--radius);
-      padding: 7px 12px;
-      color: var(--ink);
-      font-size: 0.85rem;
-    }
-    .mobile-nav{
-      display:none;
-      flex-direction: column;
-      background: var(--bg);
-      border-bottom: 1px solid var(--line);
-      padding: 8px 20px 16px;
-    }
-    .mobile-nav.open{ display:flex; }
-    .mobile-nav a{
-      color: var(--ink-soft); text-decoration:none;
-      padding: 10px 0; border-bottom: 1px solid var(--line);
-      font-size: 0.95rem;
-    }
-    .mobile-nav a:last-child{ border-bottom: none; }
-    main{ padding: 40px 20px; }
-    .hero .role-line, .hero .role-sub{ font-size: 1.35rem; }
+  .btn-submit:hover {
+    opacity: 0.88;
+  }
+
+  footer {
+    max-width: var(--content-width);
+    margin: 0 auto;
+    padding: 0 20px 48px;
+    font-size: 0.82rem;
+    color: var(--ink-faint);
+    border-top: 1px solid var(--border);
+    padding-top: 24px;
   }
 </style>
 </head>
 <body>
-<a class="skip-link" href="#main">Skip to content</a>
 
-<div class="mobile-topbar">
-  <span class="brand mono">kesava-kumar</span>
-  <button id="navToggle" aria-expanded="false" aria-controls="mobileNav">Menu</button>
-</div>
-<nav id="mobileNav" class="mobile-nav" aria-label="Section navigation">
-  <a href="#about">About</a>
-  <a href="#skills">Skills</a>
-  <a href="#projects">Projects</a>
-  <a href="#learning">Learning</a>
-  <a href="#github">GitHub</a>
-  <a href="#education">Education</a>
-  <a href="#contact">Contact</a>
-</nav>
+<a class="sr-only" href="#main">Skip to content</a>
 
-<div class="shell">
-  <aside class="sidebar">
-    <div>
-      <a class="brand" href="#top">kesava-kumar</a>
-      <nav class="side-nav" aria-label="Section navigation">
-        <ul>
-          <li><a href="#about">About</a></li>
-          <li><a href="#skills">Skills</a></li>
-          <li><a href="#projects">Projects</a></li>
-          <li><a href="#learning">Learning</a></li>
-          <li><a href="#github">GitHub</a></li>
-          <li><a href="#education">Education</a></li>
-          <li><a href="#contact">Contact</a></li>
-        </ul>
-      </nav>
+<header class="navbar">
+  <div class="nav-inner">
+    <a href="#top" class="nav-brand">Kesava Kumar G</a>
+    <nav class="nav-links">
+      <a href="#about">About</a>
+      <a href="#skills">Skills</a>
+      <a href="#projects">Projects</a>
+      <a href="#learning">Learning</a>
+      <a href="#education">Education</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+  <!-- Hero -->
+  <section id="top">
+    <h1>Kesava Kumar G</h1>
+    <p class="role-sub">Aspiring Software Engineer</p>
+    <p>
+      I'm a B.Tech Information Technology student building my foundation in programming and
+      computer science — mostly through Python, C, and C++, and a lot of time spent figuring out
+      why code breaks before I try to fix it. I'm early in this path and I'd rather show real,
+      in-progress work than pretend to be further along than I am.
+    </p>
+    <div class="tag-row mono">
+      <span class="tag tag-cobalt">Python</span>
+      <span class="tag tag-c">C++</span>
+      <span class="tag tag-c">C</span>
+      <span class="tag tag-amber">Data Structures</span>
+      <span class="tag tag-terra">Operating Systems</span>
     </div>
-    <div class="sidebar-foot mono">
-      Built with truthful progression.<br>
-      Updated as skills grow.
+  </section>
+
+  <!-- About -->
+  <section id="about">
+    <h2>About</h2>
+    <p>
+      I'm currently working through the core of a Computer Science education while studying
+      Information Technology — data structures, object-oriented programming, and operating
+      systems form most of what I'm building on right now. Alongside coursework, I practice
+      with algorithmic and competitive-programming-style problems in C++ and Python.
+    </p>
+    <p>
+      What actually holds my attention isn't finishing a problem — it's understanding why my
+      first attempt was wrong. When a submission times out or returns the wrong answer, I want
+      to trace the exact mistake, understand the fix, and check whether the corrected approach
+      would hold up against edge cases and time limits, not just the given test case.
+    </p>
+    <p>
+      I'm also gaining hands-on exposure to backend and computer-vision tooling through a
+      team project (more below), and slowly turning my GitHub from a mostly-empty profile into
+      something that actually reflects the work I'm doing.
+    </p>
+  </section>
+
+  <!-- Skills -->
+  <section id="skills">
+    <h2>Technical Skills</h2>
+    <div class="skill-columns">
+      <div class="skill-col">
+        <h3 class="mono">Comfortable with</h3>
+        <div class="tag-row mono" style="margin-top: 0;">
+          <span class="tag tag-cobalt">Python</span>
+          <span class="tag tag-c">C++</span>
+          <span class="tag tag-c">C</span>
+          <span class="tag tag-neutral">Git &amp; GitHub</span>
+          <span class="tag tag-neutral">VS Code</span>
+          <span class="tag tag-neutral">Command line / PowerShell</span>
+        </div>
+      </div>
+      <div class="skill-col">
+        <h3 class="mono">Currently learning / building exposure</h3>
+        <div class="tag-row mono" style="margin-top: 0;">
+          <span class="tag tag-amber">Data Structures</span>
+          <span class="tag tag-amber">OOP design</span>
+          <span class="tag tag-terra">Operating Systems</span>
+          <span class="tag tag-neutral">FastAPI / Uvicorn</span>
+          <span class="tag tag-neutral">OpenCV</span>
+        </div>
+      </div>
     </div>
-  </aside>
+    <p style="margin-top: 16px; font-size: 0.92rem; color: var(--ink-muted);">
+      I've deliberately split this into two lists instead of skill bars — a percentage next to
+      "Python 90%" doesn't mean much, and I'd rather be specific about what I actually use
+      versus what I'm still getting comfortable with.
+    </p>
+  </section>
 
-  <main id="main">
-    <section class="hero" id="top">
-      <p class="name mono">kesava_kumar.dev</p>
-      <h1 class="role-line">Kesava Kumar</h1>
-      <p class="role-sub">Aspiring Software Engineer</p>
-      <p>
-        I'm a B.Tech Information Technology student building my foundation in programming and
-        computer science — mostly through Python, C, and C++, and a lot of time spent figuring out
-        why code breaks before I try to fix it. I'm early in this path and I'd rather show real,
-        in-progress work than pretend to be further along than I am.
-      </p>
-      <div class="tag-row">
-        <span class="tag solid mono">python</span>
-        <span class="tag solid mono">c++</span>
-        <span class="tag solid mono">c</span>
-        <span class="tag learning mono">data structures</span>
-        <span class="tag learning mono">operating systems</span>
+  <!-- Projects -->
+  <section id="projects">
+    <h2>Projects</h2>
+
+    <div class="project-box">
+      <div class="project-head">
+        <h3>Team detection/model pipeline project</h3>
+        <span class="project-status mono">In Progress · Team Project</span>
       </div>
-    </section>
-
-    <section id="about">
-      <h2>About</h2>
-      <p>
-        I'm currently working through the core of a Computer Science education while studying
-        Information Technology — data structures, object-oriented programming, and operating
-        systems form most of what I'm building on right now. Alongside coursework, I practice
-        with algorithmic and competitive-programming-style problems in C++ and Python.
+      <p style="font-size: 0.94rem;">
+        A collaborative project split across multiple team members with separate
+        responsibilities, involving a computer-vision detection/model pipeline with a
+        Python backend.
       </p>
-      <p>
-        What actually holds my attention isn't finishing a problem — it's understanding why my
-        first attempt was wrong. When a submission times out or returns the wrong answer, I want
-        to trace the exact mistake, understand the fix, and check whether the corrected approach
-        would hold up against edge cases and time limits, not just the given test case.
-      </p>
-      <p>
-        I'm also gaining hands-on exposure to backend and computer-vision tooling through a
-        team project (more below), and slowly turning my GitHub from a mostly-empty profile into
-        something that actually reflects the work I'm doing.
-      </p>
-    </section>
-
-    <section id="skills">
-      <h2>Technical Skills</h2>
-      <div class="skill-groups">
-        <div class="skill-group">
-          <h3>Comfortable with</h3>
-          <div class="tag-row">
-            <span class="tag mono">Python</span>
-            <span class="tag mono">C++</span>
-            <span class="tag mono">C</span>
-            <span class="tag mono">Git &amp; GitHub</span>
-            <span class="tag mono">VS Code</span>
-            <span class="tag mono">Command line / PowerShell</span>
+      <div class="project-fields">
+        <div>
+          <div class="field-title mono">My contribution</div>
+          <div class="field-body">
+            Worked on the Python side of the pipeline — running and testing the detection
+            scripts (e.g. invoking the model from the command line), setting up and debugging
+            the Python/OpenCV environment on Windows, and integrating pieces of the pipeline
+            alongside the rest of the team's FastAPI/Uvicorn work. This was a team effort;
+            other members owned other parts of the system, and I'm only claiming the parts I
+            personally worked on.
           </div>
         </div>
-        <div class="skill-group">
-          <h3>Currently learning / building exposure</h3>
-          <div class="tag-row">
-            <span class="tag learning mono">Data Structures</span>
-            <span class="tag learning mono">OOP design</span>
-            <span class="tag learning mono">Operating Systems</span>
-            <span class="tag learning mono">FastAPI / Uvicorn</span>
-            <span class="tag learning mono">OpenCV</span>
+        <div>
+          <div class="field-title mono">Technologies</div>
+          <div class="field-body mono" style="font-size: 0.85rem; color: var(--ink);">
+            Python, OpenCV, FastAPI, Uvicorn, Git/GitHub, VS Code
+          </div>
+        </div>
+        <div>
+          <div class="field-title mono">What I'm learning</div>
+          <div class="field-body">
+            How a real multi-person codebase gets divided and integrated, and what it actually
+            takes to get a Python/OpenCV environment running reliably rather than just in
+            theory.
           </div>
         </div>
       </div>
-      <p class="skill-note">
-        I've deliberately split this into two lists instead of skill bars — a percentage next to
-        "Python 90%" doesn't mean much, and I'd rather be specific about what I actually use
-        versus what I'm still getting comfortable with.
+    </div>
+
+    <div class="placeholder-card">
+      <strong class="mono" style="font-size:0.85rem; color: var(--ink-muted);">[ Next project — information needed ]</strong>
+      <p style="margin-top:8px;">
+        Reserved for the next project I complete on my own — repo link, problem statement, and
+        what I built, once it exists.
       </p>
-    </section>
+    </div>
+  </section>
 
-    <section id="projects">
-      <h2>Projects</h2>
+  <!-- Learning -->
+  <section id="learning">
+    <h2>What I'm Learning</h2>
+    <p>
+      I try to treat every wrong answer or timeout as the actual lesson, not an obstacle
+      between me and the correct code. The process I default to:
+    </p>
+    <ol class="method-list">
+      <li>Identify exactly what the mistake was, not just that the output was wrong.</li>
+      <li>Understand why that specific line of reasoning failed.</li>
+      <li>Work out the corrected approach myself before checking a reference solution.</li>
+      <li>Confirm why the correction actually works.</li>
+      <li>Check it against edge cases I hadn't originally considered.</li>
+      <li>Check whether it would hold up within realistic time and memory limits.</li>
+    </ol>
+  </section>
 
-      <div class="project">
-        <div class="project-head">
-          <h3>Team detection/model pipeline project</h3>
-          <span class="status mono">in progress · team project</span>
-        </div>
-        <p>
-          A collaborative project split across multiple team members with separate
-          responsibilities, involving a computer-vision detection/model pipeline with a
-          Python backend.
-        </p>
-        <dl>
-          <div>
-            <dt>My contribution</dt>
-            <dd>
-              Worked on the Python side of the pipeline — running and testing the detection
-              scripts (e.g. invoking the model from the command line), setting up and debugging
-              the Python/OpenCV environment on Windows, and integrating pieces of the pipeline
-              alongside the rest of the team's FastAPI/Uvicorn work. This was a team effort;
-              other members owned other parts of the system, and I'm only claiming the parts I
-              personally worked on.
-            </dd>
-          </div>
-          <div>
-            <dt>Technologies</dt>
-            <dd>Python, OpenCV, FastAPI, Uvicorn, Git/GitHub, VS Code</dd>
-          </div>
-          <div>
-            <dt>What I'm learning</dt>
-            <dd>
-              How a real multi-person codebase gets divided and integrated, and what it actually
-              takes to get a Python/OpenCV environment running reliably rather than just in
-              theory.
-            </dd>
-          </div>
-        </dl>
-      </div>
-
-      <div class="placeholder-card">
-        <strong class="mono" style="font-size:0.85rem; color: var(--ink-soft);">[ next project — information needed ]</strong>
-        <p style="margin-top:8px;">
-          Reserved for the next project I complete on my own — repo link, problem statement, and
-          what I built, once it exists.
-        </p>
-      </div>
-    </section>
-
-    <section id="learning">
-      <h2>What I'm Learning</h2>
-      <p>
-        I try to treat every wrong answer or timeout as the actual lesson, not an obstacle
-        between me and the correct code. The process I default to:
-      </p>
-      <ol class="method-list">
-        <li>Identify exactly what the mistake was, not just that the output was wrong.</li>
-        <li>Understand why that specific line of reasoning failed.</li>
-        <li>Work out the corrected approach myself before checking a reference solution.</li>
-        <li>Confirm why the correction actually works.</li>
-        <li>Check it against edge cases I hadn't originally considered.</li>
-        <li>Check whether it would hold up within realistic time and memory limits.</li>
-      </ol>
-    </section>
-
-    <section id="github">
-      <h2>GitHub</h2>
-      <p>
-        My GitHub is still early — I'm actively working on filling it with real, documented
-        projects instead of leaving it empty. No stats are shown here, since I don't have
-        activity worth reporting yet; check the profile directly for the current state.
-      </p>
-      <div class="github-box">
-        <span class="mono" style="color: var(--ink-faint); font-size:0.9rem;">github.com/kesavakumar6</span>
-        <a class="btn" href="https://github.com/kesavakumar6" target="_blank" rel="noopener">View GitHub profile</a>
-      </div>
-    </section>
-
-    <section id="education">
-      <h2>Education</h2>
-      <div class="edu-row">
+  <!-- Education -->
+  <section id="education">
+    <h2>Education</h2>
+    <div class="edu-box">
+      <div class="edu-head">
         <h3>B.Tech, Information Technology</h3>
+        <span class="edu-dates mono">2025 &ndash; 2029</span>
       </div>
-      <p class="mono" style="color: var(--ink-faint); font-size:0.85rem;">Velammal Engineering College - 2025-2029</p>
-      <p>
+      <p class="mono" style="color: var(--ink-faint); font-size:0.86rem; margin-bottom: 10px;">
+        Velammal Engineering College
+      </p>
+      <p style="font-size: 0.94rem;">
         Coursework and self-study currently centered on programming fundamentals, data
         structures, object-oriented programming, and operating systems.
       </p>
-    </section>
+    </div>
+  </section>
 
-    <section id="contact" style="border-bottom:none; margin-bottom: 0;">
-      <h2>Contact</h2>
-      <p>Open to feedback, collaboration, or just talking through a problem.</p>
-      <ul class="contact-list">
-        <li><span class="k">Email</span> <a href="mailto:kesavakumar41007@gmail.com">kesavakumar41007@gmail.com</a></li>
-        <li><span class="k">Phone</span> <a href="tel:+918939764891">+91 89397 64891</a></li>
-        <li><span class="k">Github</span> <a href="https://github.com/kesavakumar6" target="_blank" rel="noopener">github.com/kesavakumar6</a></li>
-        <li><span class="k">Linkedin</span> <a href="https://www.linkedin.com/in/kesavakumarg/">linkedin.com/in/kesavakumarg/</li>
-      </ul>
-    </section>
-  </main>
-</div>
+  <!-- Contact -->
+  <section id="contact" style="margin-bottom: 0;">
+    <h2>Contact</h2>
+    <p>Open to feedback, collaboration, or just talking through a problem.</p>
+    
+    <ul class="contact-list mono">
+      <li>
+        <span class="contact-label">Email</span>
+        <a href="mailto:kesavakumar41007@gmail.com">kesavakumar41007@gmail.com</a>
+      </li>
+      <li>
+        <span class="contact-label">Phone</span>
+        <a href="tel:+918939764891">+91 89397 64891</a>
+      </li>
+      <li>
+        <span class="contact-label">GitHub</span>
+        <a href="https://github.com/kesavakumar6" target="_blank" rel="noopener">github.com/kesavakumar6</a>
+      </li>
+      <li>
+        <span class="contact-label">LinkedIn</span>
+        <a href="https://www.linkedin.com/in/kesavakumarg/" target="_blank" rel="noopener">linkedin.com/in/kesavakumarg/</a>
+      </li>
+    </ul>
+
+    <!-- Formspree Message Form -->
+    <form class="contact-form" action="https://formspree.io/f/mkjgwqqq" method="POST">
+      <div class="form-group">
+        <label for="name" class="form-label mono">Your Name</label>
+        <input type="text" id="name" name="name" class="form-input" placeholder="Your name" required>
+      </div>
+
+      <div class="form-group">
+        <label for="email" class="form-label mono">Your Email</label>
+        <input type="email" id="email" name="email" class="form-input" placeholder="name@example.com" required>
+      </div>
+
+      <div class="form-group">
+        <label for="message" class="form-label mono">Message</label>
+        <textarea id="message" name="message" class="form-textarea" placeholder="Write a note..." required></textarea>
+      </div>
+
+      <button type="submit" class="btn-submit">Send Message</button>
+    </form>
+  </section>
+</main>
 
 <footer>
-  Kesava Kumar — built to grow as the work does.
+  <p class="mono">Built with truthful progression. &middot; Updated as skills grow.</p>
 </footer>
 
-<script>
-  // Mobile nav toggle
-  const toggle = document.getElementById('navToggle');
-  const mobileNav = document.getElementById('mobileNav');
-  toggle.addEventListener('click', () => {
-    const open = mobileNav.classList.toggle('open');
-    toggle.setAttribute('aria-expanded', String(open));
-  });
-  mobileNav.querySelectorAll('a').forEach(a => {
-    a.addEventListener('click', () => {
-      mobileNav.classList.remove('open');
-      toggle.setAttribute('aria-expanded', 'false');
-    });
-  });
-
-  // Active section highlight in sidebar
-  const sections = document.querySelectorAll('main section[id]');
-  const navLinks = document.querySelectorAll('.side-nav a');
-  const setActive = (id) => {
-    navLinks.forEach(l => l.classList.toggle('active', l.getAttribute('href') === '#' + id));
-  };
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) setActive(entry.target.id);
-    });
-  }, { rootMargin: '-40% 0px -50% 0px', threshold: 0 });
-  sections.forEach(s => observer.observe(s));
-</script>
 </body>
 </html>
